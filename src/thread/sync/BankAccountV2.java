@@ -15,6 +15,7 @@ public class BankAccountV2 implements BankAccount {
     public synchronized boolean withdraw(int amount) {
         log("Starting Transaction: " + getClass().getSimpleName());
 
+        // 임계영역 (Critical Section) 시작
         log("[Verification Started] Withdrawl: " + amount + ", Balance: " + balance);
         // balance < amount -> return false
         if(balance < amount) {
@@ -27,6 +28,7 @@ public class BankAccountV2 implements BankAccount {
         sleep(1000); // time for withdrawal
         balance -= amount;
         log("[Withdrawal Complete] Withdrawal: " + amount + ", Balance: " + balance);
+        // 임계영역 (Critical Section) 종료
 
         log("Transaction Complete");
         return true;
