@@ -6,19 +6,24 @@ import java.util.concurrent.locks.ReentrantLock;
 import static util.MyLogger.log;
 import static util.ThreadUtils.*;
 
-public class BankAccountV4 implements BankAccount {
+public class BankAccountV5 implements BankAccount {
 
     private int balance;
 
     private final Lock lock = new ReentrantLock();
 
-    public BankAccountV4(int initialBalance) {
+    public BankAccountV5(int initialBalance) {
         this.balance = initialBalance;
     }
 
     @Override
     public boolean withdraw(int amount) {
         log("Starting Transaction: " + getClass().getSimpleName());
+
+        if(!lock.tryLock()) { // 락을 못얻으면 포기
+            log("[진입 실패] 이미 처리중인 작업이 있음.");
+            return false;
+        }
 
         lock.lock(); // ReentrantLock 이용 > lock 걸기 
         // try - finally 블록으로 unlock 필수적으로 해줘야함. 

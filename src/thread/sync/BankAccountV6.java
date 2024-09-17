@@ -1,24 +1,35 @@
 package thread.sync;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static util.MyLogger.log;
 import static util.ThreadUtils.*;
 
-public class BankAccountV4 implements BankAccount {
+public class BankAccountV6 implements BankAccount {
 
     private int balance;
 
     private final Lock lock = new ReentrantLock();
 
-    public BankAccountV4(int initialBalance) {
+    public BankAccountV6(int initialBalance) {
         this.balance = initialBalance;
     }
 
     @Override
     public boolean withdraw(int amount) {
         log("Starting Transaction: " + getClass().getSimpleName());
+
+        try {
+            if(!lock.tryLock(500, TimeUnit.MILLISECONDS)) { // 0.5sec 동안 락을 못얻으면 포기
+                log("[진입 실패] 이미 처리중인 작업이 있음.");
+                return false;
+            }
+        } catch(InterruptedException e) { // InterruptedException 잡아줘야 
+            throw new RuntimeException(e);
+        }
+        
 
         lock.lock(); // ReentrantLock 이용 > lock 걸기 
         // try - finally 블록으로 unlock 필수적으로 해줘야함. 

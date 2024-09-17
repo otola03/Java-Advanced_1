@@ -1,8 +1,5 @@
 package thread.sync;
 
-import static util.MyLogger.*;
-import static util.ThreadUtils.*;
-
 // Runnable responsible for withdrawal task
 
 public class WithdrawTask implements Runnable {
