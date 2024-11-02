@@ -1,3 +1,4 @@
+```
 06:14:16.872 [ Thread-2] Lock Acquisition Attempt
 06:14:16.878 [ Thread-2] Lock Acquisition Successful
 06:14:16.881 [ Thread-2] 비즈니스 로직 실행
@@ -20,6 +21,7 @@
 06:14:16.899 [ Thread-1] Lock Acquisition Successful
 06:14:16.900 [ Thread-1] 비즈니스 로직 실행
 06:14:16.911 [ Thread-1] Lock Return Successful
+```
 
 
 Thread does not go `BLOCKED` or `WAITING` but uses while loop. 
