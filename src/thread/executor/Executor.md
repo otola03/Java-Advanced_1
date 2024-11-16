@@ -11,7 +11,7 @@
 ## 2. Thread Management
 CPU, memory resources... are limited
 
-## 3. Runnalbe interface
+## 3. Runnable interface
 - no return value: can't directly receive thread's result
 - handling exceptions: run() method cannot throw checked exception (need to be handled inside using try-catch)
 

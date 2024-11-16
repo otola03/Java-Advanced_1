@@ -27,7 +27,8 @@ public class ExecutorBasicMain {
         log("== Task Complete==");
         printState(es);
 
-        es.close(); // shutdown
+        // below java v19 : shutdown()
+        es.close(); // shutdown (threads in the pool removed)
         log("== Shutdown Complete ==");
         printState(es);
     }
