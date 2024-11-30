@@ -1,4 +1,4 @@
-# `Executors` cass provides some basic methods for thread pool
+# `Executors` class provides some basic methods for thread pool
 
 ### 단일 풀 전략: `newSingleThreadPool()`
 - core size = 1
