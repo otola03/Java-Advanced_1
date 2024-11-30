@@ -1,7 +1,6 @@
 package thread.executor;
 
 import static util.MyLogger.*;
-import static util.ThreadUtils.*;
 import static thread.executor.ExecutorUtils.*;
 
 import java.util.concurrent.ExecutorService;
